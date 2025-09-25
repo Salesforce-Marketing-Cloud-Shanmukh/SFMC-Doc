@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="x-apple-disable-message-reformatting">
+        <meta name="format-detection"
+            content="telephone=no, date=no, address=no, email=no">
+        <title>Reminder: Upcoming Event, {{FirstName}}</title>
+        <style>
+        body,
+        table,
+        td {
+            margin: 0;
+            padding: 0;
+            line-height: 100%;
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+        }
+
+        img {
+            border: 0;
+            outline: none;
+            text-decoration: none;
+            -ms-interpolation-mode: bicubic;
+            display: block;
+        }
+
+        table {
+            border-collapse: collapse !important;
+        }
+
+        body {
+            width: 100% !important;
+            background-color: #f4f4f4;
+            font-family: Arial, sans-serif;
+        }
+
+        .email-container {
+            width: 100% !important;
+            max-width: 600px;
+            margin: auto;
+        }
+
+        h1 {
+            color: #003366;
+            font-size: 24px;
+            margin: 0 0 15px 0;
+        }
+
+        p {
+            font-size: 14px;
+            color: #333333;
+            margin: 0 0 10px 0;
+            line-height: 1.5;
+        }
+
+        ul {
+            margin: 0 0 20px 0;
+            padding-left: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+
+        .btn-orange {
+            background-color: #ff6600;
+            color: #ffffff;
+        }
+
+        .highlight-box {
+            background-color: #f0f8ff;
+            border-left: 4px solid #003366;
+            padding: 15px 20px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+
+        @media screen and (max-width:600px) {
+            .fluid {
+                width: 80% !important;
+                max-width: 80% !important;
+                height: auto !important;
+            }
+
+            .center-on-mobile {
+                text-align: center !important;
+            }
+
+            .p-20 {
+                padding: 20px !important;
+            }
+        }
+    </style>
+    </head>
+
+    <body bgcolor="#f4f4f4">
+        <center>
+            <table width="100%" bgcolor="#f4f4f4">
+                <tr>
+                    <td>
+                        <table class="email-container" align="center">
+                            <!-- Logo Header -->
+                            <tr>
+                                <td
+                                    style="padding:20px; text-align:center; background-color:#ffffff; border-radius:8px 8px 0 0;">
+                                    <img
+                                        src="https://www.champlain.edu/app/uploads/2024/05/Champlain-lockup-stacked-heritage.jpg"
+                                        width="180" class="fluid"
+                                        alt="Champlain College">
+                                </td>
+                            </tr>
+
+                            <!-- Main Content -->
+                            <tr>
+                                <td bgcolor="#ffffff"
+                                    style="padding:30px; color:#333333; line-height:1.5;">
+                                    <h1>Hi {{FirstName}},</h1>
+                                    <p>Just a friendly reminder for your
+                                        upcoming <strong>{{EventName}}</strong>
+                                        on
+                                        <strong>{{EventDate}}</strong>.</p>
+                                    <p>We’re excited to have you! Make sure to
+                                        mark your calendar and review the
+                                        details
+                                        below:</p>
+
+                                    <!-- Highlight Box for Event Details -->
+                                    <div class="highlight-box">
+                                        <p>📍 <strong>Location:</strong>
+                                            {{EventLocation}}</p>
+                                        <p>⏰ <strong>Time:</strong>
+                                            {{EventTime}}</p>
+                                        <p>🔗 <strong>More Info:</strong> <a
+                                                href="{{EventLink}}"
+                                                style="color:#0066cc; text-decoration:none;">Event
+                                                Details</a></p>
+                                    </div>
+
+                                    <!-- CTA Button -->
+                                    <table align="center"
+                                        style="margin:20px auto;">
+                                        <tr>
+                                            <td>
+                                                <a href="{{EventLink}}"
+                                                    class="btn btn-orange">View
+                                                    Event</a>
+                                            </td>
+                                        </tr>
+                                    </table>
+
+                                    <p style="margin-top:20px;">See you
+                                        soon,<br><strong>Champlain College
+                                            Team</strong></p>
+                                </td>
+                            </tr>
+
+                            <!-- Footer -->
+                            <tr>
+                                <td bgcolor="#f4f4f4"
+                                    style="text-align:center; font-family:Arial, sans-serif; font-size:12px; color:#666666; padding:20px;">
+                                    Champlain College • 163 S. Willard St.,
+                                    Burlington, VT 05401<br>
+                                    <a href="{{UnsubscribeLink}}"
+                                        style="color:#666666; text-decoration:underline;">Unsubscribe</a>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </center>
+    </body>
+
+</html>

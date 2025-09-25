@@ -1,0 +1,35 @@
+
+%%[
+VAR @subKey, @firstName, @lastName, locale, @row, @productRows, @rowCount, @i, @productName
+
+SET @subKey = AttributeValue("SubscriberKey")
+
+SET @firstName = ProperCase(AttributeValue("FirstName"))
+IF Empty(@firstName) Then set @firstName = "Valued Customer"
+Endif
+
+Set @email = Lookup("Profile_DE", "EmailAddress", "SubscriberKey", @subKey)
+If Empty(@email) then set @email = AttributeValue("emailaddr")
+ENDIF
+
+/* pulling multiple rows*/
+Set @productRows = LookupOrderedRows("Record_DE", 3, "Score DESC", "SubscriberKey", @subKey)
+SET @rowCount = RowCount(@productRows)
+
+If @rowCount > 0 then
+
+    for @i = 1 to @rowCount do
+    set @row = Row(@productRows, @i)
+    set @productName = field(@row, "ProductName")
+    If not empty(@productName) then
+    ]%%
+    <tr><td>%%=v(@productName)=%%</td></tr>
+    %%[
+    Endif
+Next @i
+Else
+    ]%%
+    <tr><td>check our collection</td></tr>
+%%[
+Endif
+]%%
