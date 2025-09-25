@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="x-apple-disable-message-reformatting">
+        <meta name="format-detection"
+            content="telephone=no, date=no, address=no, email=no">
+        <title>Confirmation: {{TransactionType}}, {{FirstName}}</title>
+        
+        <!--[if !mso]><!-->
+        <style type="text/css">
+            .preheader { display: none !important; visibility: hidden; opacity: 0; color: transparent; height: 0; width: 0; }
+        </style>
+        <!--<![endif]-->
+
+        <!--[if mso]>
+        <style type="text/css">
+            body, table, td {font-family: Arial, sans-serif !important;}
+            .email-container {width: 600px !important; max-width: 600px !important;}
+            .logo-container {padding: 30px 20px 20px 20px !important;}
+            .logo {max-width: 200px !important; height: auto !important;}
+            .content-section {padding: 30px !important;}
+            .footer {padding: 25px 30px !important;}
+            .btn {display: inline-block !important; padding: 16px 32px !important;}
+            .transaction-table {width: 100% !important;}
+        </style>
+        <![endif]-->
+
+        <!--[if gte mso 9]>
+        <style type="text/css">
+            table {border-collapse: collapse !important;}
+            .email-container {width: 600px !important; max-width: 600px !important;}
+        </style>
+        <![endif]-->
+
+        <!--[if mso 16]>
+        <style type="text/css">
+            .btn {background-color: #003366 !important; color: #ffffff !important;}
+        </style>
+        <![endif]-->
+
+        <style>
+        /* Base Styles */
+        body, table, td {
+            margin: 0;
+            padding: 0;
+            line-height: 100%;
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+        }
+
+        img {
+            border: 0;
+            outline: none;
+            text-decoration: none;
+            -ms-interpolation-mode: bicubic;
+            display: block;
+        }
+
+        table {
+            border-collapse: collapse !important;
+        }
+
+        body {
+            width: 100% !important;
+            background-color: #f4f4f4;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+
+        .email-container {
+            width: 100% !important;
+            max-width: 600px;
+            margin: auto;
+            background-color: #ffffff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Logo Specific CSS */
+        .logo-container {
+            text-align: center;
+            padding: 30px 20px 20px 20px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .logo {
+            max-width: 200px;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.02);
+        }
+
+        /* Typography */
+        .preheader {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            font-size: 1px;
+            color: #f4f4f4;
+            line-height: 1px;
+            max-height: 0px;
+            max-width: 0px;
+            opacity: 0;
+            overflow: hidden;
+        }
+
+        h1 {
+            color: #003366;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            margin: 0 0 20px 0;
+            line-height: 1.2;
+        }
+
+        .confirmation-title {
+            color: #003366;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            font-size: 24px;
+            font-weight: 600;
+            margin: 0 0 15px 0;
+            line-height: 1.3;
+        }
+
+        p {
+            font-size: 16px;
+            color: #444444;
+            margin: 0 0 15px 0;
+            line-height: 1.6;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+
+        .success-text {
+            font-size: 18px;
+            color: #28a745;
+            font-weight: 500;
+            margin: 0 0 20px 0;
+        }
+
+        /* Button Styles */
+        .btn {
+            display: inline-block;
+            padding: 16px 32px;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 8px;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            font-size: 16px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #003366 0%, #004080 100%);
+            color: #ffffff !important;
+            box-shadow: 0 4px 12px rgba(0, 51, 102, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #004080 0%, #0052a3 100%);
+            box-shadow: 0 6px 16px rgba(0, 51, 102, 0.4);
+            transform: translateY(-2px);
+        }
+
+        /* Transaction Table */
+        .transaction-table {
+            width: 100%;
+            margin: 25px 0;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .transaction-table th, .transaction-table td {
+            padding: 16px 20px;
+            text-align: left;
+            border-bottom: 1px solid #e0e0e0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+
+        .transaction-table th {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            color: #003366;
+            font-weight: 600;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .transaction-table td {
+            background-color: #ffffff;
+            color: #444444;
+            font-size: 15px;
+        }
+
+        .transaction-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .transaction-table tr:hover td {
+            background-color: #f8f9fa;
+        }
+
+        /* Content Areas */
+        .content-section {
+            padding: 30px;
+            background-color: #ffffff;
+        }
+
+        .success-badge {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            color: #ffffff;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            display: inline-block;
+            margin: 0 0 20px 0;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #f8f9fa;
+            border-top: 1px solid #e9ecef;
+            padding: 25px 30px;
+            text-align: center;
+        }
+
+        .footer p {
+            font-size: 14px;
+            color: #666666;
+            margin: 0 0 10px 0;
+        }
+
+        .footer a {
+            color: #003366;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Mobile Responsive */
+        @media screen and (max-width: 600px) {
+            .email-container {
+                margin: 10px;
+                border-radius: 8px;
+            }
+
+            .logo-container {
+                padding: 20px 15px 15px 15px;
+            }
+
+            .logo {
+                max-width: 160px;
+            }
+
+            .content-section {
+                padding: 20px 15px;
+            }
+
+            .footer {
+                padding: 20px 15px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            .confirmation-title {
+                font-size: 20px;
+            }
+
+            p {
+                font-size: 15px;
+            }
+
+            .success-text {
+                font-size: 16px;
+            }
+
+            .btn {
+                padding: 14px 24px;
+                font-size: 15px;
+            }
+
+            .transaction-table th, .transaction-table td {
+                padding: 12px 15px;
+            }
+
+            .transaction-table th {
+                font-size: 13px;
+            }
+
+            .transaction-table td {
+                font-size: 14px;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .logo {
+                max-width: 140px;
+            }
+
+            h1 {
+                font-size: 22px;
+            }
+
+            .btn {
+                padding: 12px 20px;
+                font-size: 14px;
+            }
+
+            .transaction-table th, .transaction-table td {
+                padding: 10px 12px;
+            }
+        }
+    </style>
+    </head>
+
+    <body bgcolor="#f4f4f4">
+        <!-- Preheader Text -->
+        <div class="preheader">Transaction confirmed! Your {{TransactionType}} has been processed successfully. Reference ID: {{TransactionID}}</div>
+        
+        <center>
+            <table width="100%" bgcolor="#f4f4f4">
+                <tr>
+                    <td>
+                        <table class="email-container" align="center">
+                            <!-- Logo Section -->
+                            <tr>
+                                <td class="logo-container">
+                                    <img
+                                        src="https://www.champlain.edu/app/uploads/2024/05/Champlain-lockup-stacked-heritage.jpg"
+                                        alt="Champlain College Logo"
+                                        class="logo">
+                                </td>
+                            </tr>
+
+                            <!-- Main Content -->
+                            <tr>
+                                <td class="content-section">
+                                    <h1>Hi {{FirstName}},</h1>
+                                    <div class="success-badge">✓ Transaction Confirmed</div>
+                                    <p class="success-text">We've successfully processed your <strong>{{TransactionType}}</strong>!</p>
+                                    <p>Here's a summary of your transaction details:</p>
+
+                                    <!-- Transaction Details Table -->
+                                    <table class="transaction-table">
+                                        <tr>
+                                            <th>Reference ID</th>
+                                            <td>{{TransactionID}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Transaction Type</th>
+                                            <td>{{TransactionType}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Amount</th>
+                                            <td>{{Amount}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Date & Time</th>
+                                            <td>{{TransactionDate}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Status</th>
+                                            <td style="color: #28a745; font-weight: 600;">✓ Completed</td>
+                                        </tr>
+                                    </table>
+
+                                    <!-- CTA Button -->
+                                    <table align="center" style="margin:30px auto;">
+                                        <tr>
+                                            <td>
+                                                <a href="{{TransactionLink}}" class="btn btn-primary">View Full Details</a>
+                                            </td>
+                                        </tr>
+                                    </table>
+
+                                    <p style="margin:20px 0 0; font-size:15px; color:#666666;">
+                                        Need assistance? Our support team is here to help.<br>
+                                        <strong>Thank you for choosing Champlain College!</strong>
+                                    </p>
+                                </td>
+                            </tr>
+
+                            <!-- Footer -->
+                            <tr>
+                                <td class="footer">
+                                    <p style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; color: #003366; margin: 0 0 10px 0; font-weight: 600;">
+                                        Champlain College
+                                    </p>
+                                    <p style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 14px; color: #666666; margin: 0 0 15px 0; line-height: 1.4;">
+                                        163 South Willard Street, Burlington, VT 05401<br>
+                                        Phone: (802) 860-2700 | Email: support@champlain.edu
+                                    </p>
+                                    <p style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 12px; color: #999999; margin: 0;">
+                                        <a href="https://www.champlain.edu" style="color:#003366; text-decoration:none;">Visit Website</a> | 
+                                        <a href="{{UnsubscribeLink}}" style="color:#999999; text-decoration:underline;">Unsubscribe</a>
+                                    </p>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </center>
+    </body>
+</html>

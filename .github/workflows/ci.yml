@@ -1,0 +1,38 @@
+name: CI - Lint & Link Check
+
+on:
+  pull_request:
+  push:
+    branches: [ main, sfmc-architect-docs ]
+
+jobs:
+  markdown-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install markdownlint-cli
+        run: |
+          npm --version
+          npm install -g markdownlint-cli@0.39.0
+      - name: Lint Markdown
+        run: |
+          markdownlint "**/*.md" --ignore node_modules
+
+  link-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Link Checker
+        uses: lycheeverse/lychee-action@v1
+        with:
+          args: --verbose --no-progress --exclude-mail --accept 200,429 "**/*.md"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+

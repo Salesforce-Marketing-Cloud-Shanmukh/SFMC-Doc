@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+  %%[ /* Initial AMPScript <div style="display: none;">*/
+
+    var @preheader_shimCount, @preheader_text
+    
+    /* The preheader shim is used to ensure unwanted text does not show
+    in the inbox preview of your email. Increase the shim count if your
+    preheader text is short. The number signifies the amount of blank spaces
+    that will be inserted after the preheader text. */
+
+    set @preheader_shimCount = 105
+
+    set @preheader_text = ""
+
+　　/*get point data*/
+    var @point_text,@point
+    SET @point = Lookup("ClutchData", "Points_Balance" ,"ContactKey", _subscriberkey)
+    IF EMPTY (@point) or @point < 1 THEN
+      set @point_text = ""
+    ELSE
+      set @point_text = Format(@point,"###,###,###")
+    ENDIF    
+ 
+
+/* </div> */ ]%%
+  <head>
+    <!-- Content Builder/ASICS Performance/Templates/ANA_Performance_1.0/ANA_Performance_1.0 -->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>%%member_busname%%</title>
+    <style>
+      body { margin: 0 auto !important; min-width: 100% !important; padding: 0 !important; width: 100% !important; }
+      
+      * { -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; }
+      
+      img { border: 0; height: auto; line-height: 100%; }
+      
+      sup { font-size: 55%; line-height: 0; }
+      
+      span.outlook-overflow-scaling { width: 100% !important; max-width: 100%; padding: 0 !important; }
+      
+      a, a:link { color: #011e62; text-decoration: none; }
+      
+      body, table, td { font-family: "ヒラギノ角ゴ Pro", "Hiragino Kaku Gothic Pro", Osaka, "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", "Graphik", sans-serif !important; letter-spacing: 1px; }
+      
+      h1, h2, h3, h4, h5, h6 { margin: 0 0 8px; }
+      
+      p { margin: 0 0 15px; }
+      
+      .desktop-divider { display: inline-block!important; }
+      
+      .desktop-content { display: block!important; height: inherit !important; }
+      
+      .heading, .heading-text { font-family: "ヒラギノ角ゴ Pro", "Hiragino Kaku Gothic Pro", Osaka, "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", "Graphik", sans-serif !important; }
+      
+      .mobile-content { display: none; }
+      
+      .mobile-line-break { display: none; }
+      
+      .subheading, .subheading-text { font-family: "ヒラギノ角ゴ Pro", "Hiragino Kaku Gothic Pro", Osaka, "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", "Graphik", sans-serif !important; }
+      
+      .text-ltc { text-align: left; }
+      
+      #backgroundWrapper, .email-body { background-color: white; }
+      
+      .stack-wrapper { font-size: 0; text-align: center; white-space: nowrap; }
+      .stack-wrapper .column, .stack-wrapper .column1, .stack-wrapper .column2, .stack-wrapper .column3 { display: inline-block; width: 100%; vertical-align: top; white-space: normal; }
+      
+      .header img, .header .logo-wrapper { max-width: 166px !important; }
+      
+      .footer .copyright { font-family: 'Graphik', Helvetica, Arial, sans-serif !important; }
+      
+      .footerMainCat .carrot, .footerSubCat .carrot { padding-left: 30px !important; }
+      .footerMainCat .nav-item, .footerSubCat .nav-item { font-size: 13px; }
+      
+      .footerMainCat .carrot { height: 32px !important; }
+      .footerMainCat .column { border: none !important; margin: 3px; max-width: 205px; }
+      .footerMainCat .stack-wrapper { padding: 15px 0 0 !important; white-space: normal; }
+      
+      .footerSubCat .container { padding: 15px 6px !important; }
+      .footerSubCat .nav-column { min-height: 0 !important; }
+      
+      .socialBar .container { padding: 0 10px 15px !important; }
+      
+      .OneColumn .heading-text { font-size: 35px; line-height: 1; }
+      .OneColumn .subheading-text { font-size: 24px; line-height: 1; }
+      
+      .twoColumn .column, .twoColumnArticle .column { max-width: 320px; }
+      .twoColumn .subheading-text, .twoColumnArticle .subheading-text { font-size: 24px; line-height: 1.2; }
+      
+      .twoColumnArticle .column { vertical-align: middle; }
+      
+      .twoColumnCta .column { margin: 0 6px; max-width: 240px; }
+      
+      .twoColumnProducts .column1, .twoColumnProducts .column2 { max-width: 316px; }
+      .twoColumnProducts .column2 { margin-left: 8px; }
+      .twoColumnProducts .icons-container { padding: 0 0 5px !important; }
+      
+      .twoColumnTable .container { padding: 12px !important; }
+      .twoColumnTable .heading-text { font-size: 20px; }
+      
+      .threeColumnProducts .column, .threeColumnProducts .column2 { max-width: 208px; }
+      .threeColumnProducts .column2 { margin: 0 7px; }
+      .threeColumnProducts .icons-container { padding: 0 0 5px !important; }
+      .threeColumnProducts .icons-inner-container { max-width: 100% !important; }
+      
+      @media only screen and (max-width: 599px) { u ~ .email-body #backgroundWrapper { width: 100vw !important; }
+        .desktop-content { display: none !important; height: 0 !important; }
+        .desktop-divider { display: none!important; }
+        .mobile-content { display: block; }
+        .mobile-line-break { display: block; }
+        .text-ltc { text-align: center; }
+        .stack-wrapper { white-space: normal !important; }
+        .header img, .header .logo-wrapper { max-width: 132px !important; }
+        .footerMainCat .carrot, .footerSubCat .carrot { padding-left: 12px !important; }
+        .footerMainCat .nav-item, .footerSubCat .nav-item { font-size: 14px; }
+        .footerMainCat .carrot { height: 50px !important; }
+        .footerMainCat .column { border-bottom: 1px solid #cacacc !important; margin: 0; max-width: 100%; }
+        .footerMainCat .last-nav { border: none !important; }
+        .footerMainCat .stack-wrapper { padding: 0 8px !important; }
+        .footerSubCat .container { padding: 0 8px 10px !important; }
+        .footerSubCat .nav-column { min-height: 50px !important; }
+        .socialBar .container { padding: 0 10px 7px !important; }
+        .OneColumn .heading-text, .twoColumn .heading-text { font-size: 21px; }
+        .OneColumn .subheading-text, .twoColumn .subheading-text { font-size: 19px; }
+        .twoColumn .column, .twoColumnArticle .column { max-width: 100%; }
+        .twoColumnCta .column { margin: 0; max-width: 100%; }
+        .twoColumnProducts .column1, .twoColumnProducts .column2 { margin: 0; max-width: 100%; }
+        .twoColumnProducts .icons-container { padding: 0 5px 5px !important; }
+        .twoColumnTable .container { padding: 5px !important; }
+        .twoColumnTable .heading-text { font-size: 16px; }
+        .threeColumnProducts .column, .threeColumnProducts .column2 { margin: 0; max-width: 100%; }
+        .threeColumnProducts .icons-container { padding: 0 5px 5px !important; }
+        .threeColumnProducts .icons-inner-container { max-width: 80% !important; } }
+      @media only screen and (max-width: 320px) { .footerMainCat .carrot, .footerSubCat .carrot { padding-left: 8px !important; }
+        .footerMainCat .nav-item, .footerSubCat .nav-item { font-size: 13px; } }
+    </style>
+    <!--[if false]><!-->
+    <style>
+      /* ASICS fonts - Graphik */
+      @font-face { font-family: 'Graphik'; src: url(https://fonts.asics.digital/graphik/Graphik-RegularItalic-Web.eot); src: url(https://fonts.asics.digital/graphik/Graphik-RegularItalic-Web.eot?#iefix) format("embedded-opentype"), url(https://fonts.asics.digital/graphik/Graphik-RegularItalic-Web.woff2) format("woff2"), url(https://fonts.asics.digital/graphik/Graphik-RegularItalic-Web.woff) format("woff"); font-display: swap; font-stretch: normal; font-style: italic; font-weight: 400; }
+      
+      @font-face { font-family: 'Graphik'; src: url(https://fonts.asics.digital/graphik/Graphik-Regular-Web.eot); src: url(https://fonts.asics.digital/graphik/Graphik-Regular-Web.eot?#iefix) format("embedded-opentype"), url(https://fonts.asics.digital/graphik/Graphik-Regular-Web.woff2) format("woff2"), url(https://fonts.asics.digital/graphik/Graphik-Regular-Web.woff) format("woff"); font-display: swap; font-stretch: normal; font-style: normal; font-weight: 400; }
+      
+      a[x-apple-data-detectors], #MessageViewBody .samsungfix a { color: inherit !important; font-family: inherit !important; font-size: inherit !important; font-weight: inherit !important; line-height: inherit !important; text-decoration: none !important; }
+      
+      #MessageViewBody, #MessageWebViewDiv { margin: 0 !important; min-width: 100vw; padding: 0 !important; zoom: 1 !important; }
+      
+      #MessageViewBody #backgroundWrapper { min-width: 100vw; }
+      
+      #MessageViewBody .threeColumnNoStack img, #MessageViewBody .fourColumnNoStack img, #MessageViewBody .fiveColumnNoStack img { display: inline-block !important; }
+    </style>
+    <!--<![endif]-->
+    <!--[if true]>
+    <style>
+      body, h1, h2, h3, h4, h5, h6, table, td, .footer .copyright, .footer .links, .heading, .heading-txt, .subheading, .subheading-txt { font-family: Helvetica, Arial, sans-serif !important; }
+      
+      table { border-collapse: collapse; }
+      
+      table, td { mso-line-height-rule: exactly; mso-margin-bottom-alt: 0; mso-margin-top-alt: 0; mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
+      
+      li { text-indent: -1em; margin: 0px 0px 6px; }
+      
+      sup { font-size: 75% !important; mso-text-raise: 12%; }
+      
+      .column, .column1, .column2, .column3 { margin: 0 !important; }
+      
+      .cta-btn { padding: 12px 25px 10px; }
+      
+      .desktop-content, .desktop-divider { display: block !important; }
+    </style>
+    <![endif]-->
+    
+    <!--[if gte mso 9]>
+    <xml>
+      <o:OfficeDocumentSettings>
+        <o:AllowPNG/>
+        <o:PixelsPerInch>96</o:PixelsPerInch>
+      </o:OfficeDocumentSettings>
+    </xml>
+    <![endif]-->
+  </head>
+  <body class="email-body" style="font-family: sans-serif; margin: 0; padding: 0;">
+    <table id="backgroundWrapper" border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
+      <tr>
+        <td align="center">
+          <div style="display: none; max-height: 0px; overflow: hidden;">
+            %%=v(@preheader_text)=%%
+            %%[
+        /* Sets a default amount of shims */
+        if empty(@preheader_shimCount) then
+         set @preheader_shimCount = 105
+        endif
+
+        /* Sets the amount of spaces specified by the shimCount variable
+        DO NOT reformat the "for" loop code! */ 
+        for @i = 1 to @preheader_shimCount DO
+         set @Preheader_Shim = "&nbsp;&zwnj;"
+       ]%%%%=v(@Preheader_Shim)=%%%%[next @i]%%
+            <custom name="opencounter" type="tracking" />
+          </div>
+          <table border="0" cellpadding="0" cellspacing="0" role="presentation">
+            <tr>
+              <td class="main" align="center" style="width: 640px;">
+                <table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="min-width: 100%; " class="stylingblock-content-wrapper"><tr><td class="stylingblock-content-wrapper camarker-inner"><table border="0" cellpadding="0" cellspacing="0" class="header" role="presentation" style="font-family: sans-serif;" width="100%">
+ 
+  <tr>
+   <td align="center" style="padding: 30px 0;">
+    <table border="0" cellpadding="0" cellspacing="0" class="logo-wrapper" role="presentation" style="margin: 0 auto; max-width: 166px; width: 100%;" width="166">
+     
+      <tr>
+       <td align="center">
+        <a alias="Header_Logo" href="https://protect-eu.mimecast.com/s/8ZA6C14NDS87B1nSL7Ytt?domain=asics.com" style="color: #001e62; text-decoration: none;" target="_blank"><img alt="Asics" src="https://image.info.asics.com/lib/fe33157075640675701276/m/5/558156f5-1260-4b59-b8c0-fa003bc27e4c.png" style="border: 0; display: block; margin: 0; max-width: 166px; width: 100%;" width="166"> </a></td></tr></table></td></tr></table>%%[IF length(@point_text) > 0 THEN]%%<table border="0" cellpadding="0" cellspacing="0" class="header" role="presentation" style="font-family: sans-serif;" width="100%">
+ 
+  <tr>
+   <td align="center" style="color: #011e62; font-size: 14px; line-height: 1.4; mso-line-height-alt: 110%;">
+    <p style="margin: 5px 20px 10px;">
+     <a alias="Header_Text" style="color: #011e62; font-weight: bold; text-decoration: none;">お客様のOneASICSポイント：%%=v(@point_text)=%%</a></p></td></tr></table> %%[ENDIF]%%</td></tr></table><table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="min-width: 100%; " class="stylingblock-content-wrapper"><tr><td class="stylingblock-content-wrapper camarker-inner"><table border="0" cellpadding="0" cellspacing="0" class="OneColumn" role="presentation" style="font-family: sans-serif;" width="100%">
+ 
+  <tr>
+   <td align="center" style="padding: 0 15px;">
+    <table border="0" cellpadding="0" cellspacing="0" role="presentation">
+     
+      <tr>
+       <td align="center" style="padding: 0 0 15px;">
+        <a alias="image1" conversion="false" data-linkto="https://" href="https://protect-eu.mimecast.com/s/inGiC2WNEc7NZvKT1vDtm?domain=asics.com" title=""><img alt="Image Alt" data-assetid="525946" src="https://image.info.asics.com/lib/fe33157075640675701276/m/18/a5711199-8b75-4964-b7b0-d10c30bfaaee.png" style="display: block; margin: 0px; width: 100%; padding: 0px; height: auto; text-align: center; border: 0px none transparent;" width="640"></a></td></tr><tr>
+       <td align="center">
+        <h1 class="heading" style="color: #011e62; font-family: sans-serif; font-size: 21px; line-height: 1; mso-line-height-alt: 90%; margin: 0 0 15px;">
+         もうチェックした？<br>
+         シリーズ11代目「GT-2000 11」</h1></td></tr><tr>
+       <td align="center" style="color: #011e62; font-size: 16px; line-height: 1.3; word-break: break-word;">
+        <p style="margin: 0px 0px 15px; text-align: left;">
+         安定性と軽量性に優れた「GT-2000」シリーズの最新作。<br>
+         <br>
+         サポート性と、やわらかく跳ねるようなライド感で、<br>
+         ランナーのステップアップや日々のランニングをサポート。</p></td></tr></table></td></tr></table></td></tr></table><table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="min-width: 100%; " class="stylingblock-content-wrapper"><tr><td class="stylingblock-content-wrapper camarker-inner"><table border="0" cellpadding="0" cellspacing="0" role="presentation" style="max-width: 640px; margin: 0 auto;" width="100%">
+ 
+  <tr class="nostack-2col">
+   <td align="center" style="width: 316px;" valign="top">
+    <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="font-family: sans-serif;" width="100%">
+     
+      <tr>
+       <td align="center" style="padding: 0 0 20px;">
+        <a alias="image4" conversion="false" data-linkto="https://" href="https://protect-eu.mimecast.com/s/06XAC3wXGSZ59w7T2-ZP5?domain=asics.com" title=""><img alt="Image Alt" data-assetid="525958" src="https://image.info.asics.com/lib/fe33157075640675701276/m/18/ec52cfd0-38c2-4572-ac08-08ff6f5e69a5.jpg" style="display: block; margin: 0px; max-width: 316px; width: 100%; padding: 0px; height: auto; text-align: center; border: 0px;" width="316"></a></td></tr><tr>
+       <td align="center" style="word-break: break-word;">
+        <h2 class="subheading" style="color: #011e62; font-family: sans-serif; font-size: 18px; line-height: 1.2; margin: 0 20px 5px; word-break: break-word;">
+         GT-2000 11</h2></td></tr><tr>
+       <td align="center" style="color: #011e62; font-size: 14px; line-height: 1.3; word-break: break-word;">
+        <p class="price" style="font-weight: bold; margin: 0 0 15px;">
+        </p></td></tr><tr>
+       <td align="center" class="cta-text" style=" font-size: 14px; font-weight: 500; line-height: 1.3; padding: 0 20px 15px; word-break: break-word;">
+        <a alias="CTA_Text3" conversion="false" data-linkto="https://" href="https://protect-eu.mimecast.com/s/06XAC3wXGSZ59w7T2-ZP5?domain=asics.com" style="color:#011e62;text-decoration:none;" target="_blank" title="">商品詳細&nbsp; &rsaquo;</a></td></tr></table></td><td style="min-width: 4px;">
+    &nbsp;</td><td align="center" style="width: 316px;" valign="top">
+    <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="font-family: sans-serif;" width="100%">
+     
+      <tr>
+       <td align="center" style="padding: 0 0 20px;">
+        <a alias="image5" conversion="false" data-linkto="https://" href="https://protect-eu.mimecast.com/s/-4AiC4L3JUrp9yYuWKTUu?domain=asics.com" title=""><img alt="Image Alt" data-assetid="525959" src="https://image.info.asics.com/lib/fe33157075640675701276/m/18/056c0497-ce16-44f6-bf94-37fdb7bd0f83.jpg" style="display: block; margin: 0px; max-width: 316px; width: 100%; padding: 0px; height: auto; text-align: center; border: 0px;" width="316"></a></td></tr><tr>
+       <td align="center" style="word-break: break-word;">
+        <h2 class="subheading" style="color: #011e62; font-family: sans-serif; font-size: 18px; line-height: 1.2; margin: 0 20px 5px; text-transform: uppercase; word-break: break-word;">
+         GT-2000 11</h2></td></tr><tr>
+       <td align="center" style="color: #011e62; font-size: 14px; line-height: 1.3; word-break: break-word;">
+        <p class="price" style="font-weight: bold; margin: 0 0 15px;">
+        </p></td></tr><tr>
+       <td align="center" class="cta-text" style=" font-size: 14px; font-weight: 500; line-height: 1.3; padding: 0 20px 15px; word-break: break-word;">
+        <a alias="CTA_Text4" conversion="false" data-linkto="https://" href="https://protect-eu.mimecast.com/s/-4AiC4L3JUrp9yYuWKTUu?domain=asics.com" style="color:#011e62;text-decoration:none;" target="_blank" title="">商品詳細&nbsp; &rsaquo;</a></td></tr></table></td></tr></table></td></tr></table><table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="min-width: 100%; " class="stylingblock-content-wrapper"><tr><td class="stylingblock-content-wrapper camarker-inner"><table border="0" cellpadding="0" cellspacing="0" role="presentation" style="font-family: sans-serif;" width="100%">
+ 
+  <tr>
+   <td align="center" style="padding: 10px 15px;">
+    <table border="0" cellpadding="0" cellspacing="0" role="presentation">
+     
+      <tr>
+       <td align="center" class="cta-btn" style="background-color: #011e62; border: 2px solid #011e62; border-radius: 50px; font-size: 16px; line-height: 1.1; mso-padding-alt: 8px 1px 10px; width: 240px;">
+        <a alias="CTA1" conversion="false" data-linkto="https://" href="https://protect-eu.mimecast.com/s/inGiC2WNEc7NZvKT1vDtm?domain=asics.com" style="color:#ffffff;text-decoration:none; display: inline-block;  font-weight: bold; padding: 9px 0; width: 100%;" target="_blank" title="">商品一覧</a></td></tr></table></td></tr></table></td></tr></table><table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="min-width: 100%; " class="stylingblock-content-wrapper"><tr><td class="stylingblock-content-wrapper camarker-inner"><table border="0" cellpadding="0" cellspacing="0" role="presentation" style="font-family: sans-serif;" width="100%">
+ 
+  <tr>
+   <td align="center" style="padding: 10px 15px;">
+    <table border="0" cellpadding="0" cellspacing="0" role="presentation">
+     
+      <tr>
+       <td align="center" class="cta-btn" style="background-color: #011e62; border: 2px solid #011e62; border-radius: 50px; font-size: 16px; line-height: 1.1; mso-padding-alt: 8px 1px 10px; width: 240px;">
+        <a alias="CTA2" conversion="false" data-linkto="https://" href="https://protect-eu.mimecast.com/s/62M4C5L4gUAVpoguxIxkf?domain=asics.com" style="color:#ffffff;text-decoration:none; display: inline-block;  font-weight: bold; padding: 9px 0; width: 100%;" target="_blank" title="">特集ページ</a></td></tr></table></td></tr></table></td></tr></table><table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="min-width: 100%; " class="stylingblock-content-wrapper"><tr><td class="stylingblock-content-wrapper camarker-inner"><table aria-hidden="true" class="email-container" role="presentation" style="max-width: 680px;mso-hide:all;" width="100%" height="30" cellspacing="0" cellpadding="0" border="0" align="center">
+ 
+  <tr>
+   <td>
+    <table aria-hidden="true" role="presentation" style="background-color:#F2F4F7;" width="100%" cellspacing="0" cellpadding="0" border="0">
+     
+      <tr>
+      </tr></table></td></tr></table></td></tr></table><table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="min-width: 100%; " class="stylingblock-content-wrapper"><tr><td class="stylingblock-content-wrapper camarker-inner"><table border="0" cellpadding="0" cellspacing="0" class="OneColumn" role="presentation" style="font-family: sans-serif;" width="100%">
+ 
+  <tr>
+   <td align="center" style="padding: 0 15px;">
+    <table border="0" cellpadding="0" cellspacing="0" role="presentation">
+     
+      <tr>
+       <td align="center" style="padding: 0 0 15px;">
+        <a alias="image6" conversion="false" data-linkto="https://" href="https://protect-eu.mimecast.com/s/P7cuC69NjFXn0EVtLwdqF?domain=asics.com" title=""><img alt="Image Alt" data-assetid="525944" src="https://image.info.asics.com/lib/fe33157075640675701276/m/18/a17be35f-8959-404d-8834-1d43eb244219.png" style="display: block; margin: 0px; width: 100%; padding: 0px; height: auto; text-align: center; border: 0px none transparent;" width="640"></a></td></tr><tr>
+       <td align="center">
+        <h1 class="heading" style="color: #011e62; font-family: sans-serif; font-size: 21px; line-height: 1; mso-line-height-alt: 90%; margin: 0 0 15px;">
+         12月25日まで<br>
+         期間限定で再販売</h1></td></tr><tr>
+       <td align="center" style="color: #011e62; font-size: 16px; line-height: 1.3; word-break: break-word;">
+        <p style="margin: 0px 0px 15px; text-align: left;">
+         ピッチ型のアスリートのために開発された、アシックスレーシングモデルにおける最高峰のシューズのひとつ、METASPEED EDGE。<br>
+         <br>
+         走行中のエネルギーを節約、レース後半でもパフォーマンスを維持するシューズで自己ベストを目指そう。</p></td></tr></table></td></tr></table></td></tr></table><table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="min-width: 100%; " class="stylingblock-content-wrapper"><tr><td class="stylingblock-content-wrapper camarker-inner"><table border="0" cellpadding="0" cellspacing="0" role="presentation" style="max-width: 640px; margin: 0 auto;" width="100%">
+ 
+  <tr class="nostack-2col">
+   <td align="center" style="width: 316px;" valign="top">
+    <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="font-family: sans-serif;" width="100%">
+     
+      <tr>
+       <td align="center" style="padding: 0 0 20px;">
+        <a alias="image7" conversion="false" data-linkto="https://" href="https://protect-eu.mimecast.com/s/Kdq0C7X0kHLOVvET0BzCX?domain=asics.com" title=""><img alt="Image Alt" data-assetid="522634" src="https://image.info.asics.com/lib/fe33157075640675701276/m/17/0773bab2-223a-45f9-acaf-47d8b18cadce.jpg" style="display: block; margin: 0px; max-width: 316px; width: 100%; padding: 0px; height: auto; text-align: center; border: 0px;" width="316"></a></td></tr><tr>
+       <td align="center" style="word-break: break-word;">
+        <h2 class="subheading" style="color: #011e62; font-family: sans-serif; font-size: 18px; line-height: 1.2; margin: 0 20px 5px; word-break: break-word;">
+         METASPEED EDGE</h2></td></tr><tr>
+       <td align="center" style="color: #011e62; font-size: 14px; line-height: 1.3; word-break: break-word;">
+        <p class="price" style="font-weight: bold; margin: 0 0 15px;">
+        </p></td></tr><tr>
+       <td align="center" class="cta-text" style=" font-size: 14px; font-weight: 500; line-height: 1.3; padding: 0 20px 15px; word-break: break-word;">
+        <a alias="CTA_Text5" conversion="false" data-linkto="https://" href="https://protect-eu.mimecast.com/s/Kdq0C7X0kHLOVvET0BzCX?domain=asics.com" style="color:#011e62;text-decoration:none;" target="_blank" title="">商品詳細&nbsp; &rsaquo;</a></td></tr></table></td><td style="min-width: 4px;">
+    &nbsp;</td><td align="center" style="width: 316px;" valign="top">
+    <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="font-family: sans-serif;" width="100%">
+     
+      <tr>
+       <td align="center" style="padding: 0 0 20px;">
+        <a alias="image8" conversion="false" data-linkto="https://" href="https://protect-eu.mimecast.com/s/Okw7C8ENlT97PlOhRnx7E?domain=asics.com" title=""><img alt="Image Alt" data-assetid="522635" src="https://image.info.asics.com/lib/fe33157075640675701276/m/18/b609bbcb-d050-420e-b714-fb4e3fb4c540.jpg" style="display: block; margin: 0px; max-width: 316px; width: 100%; padding: 0px; height: auto; text-align: center; border: 0px;" width="316"></a></td></tr><tr>
+       <td align="center" style="word-break: break-word;">
+        <h2 class="subheading" style="color: #011e62; font-family: sans-serif; font-size: 18px; line-height: 1.2; margin: 0 20px 5px; text-transform: uppercase; word-break: break-word;">
+         METASPEED EDGE</h2></td></tr><tr>
+       <td align="center" style="color: #011e62; font-size: 14px; line-height: 1.3; word-break: break-word;">
+        <p class="price" style="font-weight: bold; margin: 0 0 15px;">
+        </p></td></tr><tr>
+       <td align="center" class="cta-text" style=" font-size: 14px; font-weight: 500; line-height: 1.3; padding: 0 20px 15px; word-break: break-word;">
+        <a alias="CTA_Text6" conversion="false" data-linkto="https://" href="https://protect-eu.mimecast.com/s/Okw7C8ENlT97PlOhRnx7E?domain=asics.com" style="color:#011e62;text-decoration:none;" target="_blank" title="">商品詳細&nbsp; &rsaquo;</a></td></tr></table></td></tr></table></td></tr></table><table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="min-width: 100%; " class="stylingblock-content-wrapper"><tr><td class="stylingblock-content-wrapper camarker-inner"><table border="0" cellpadding="0" cellspacing="0" role="presentation" style="font-family: sans-serif;" width="100%">
+ 
+  <tr>
+   <td align="center" style="padding: 10px 15px;">
+    <table border="0" cellpadding="0" cellspacing="0" role="presentation">
+     
+      <tr>
+       <td align="center" class="cta-btn" style="background-color: #011e62; border: 2px solid #011e62; border-radius: 50px; font-size: 16px; line-height: 1.1; mso-padding-alt: 8px 1px 10px; width: 240px;">
+        <a alias="CTA3" conversion="false" data-linkto="https://" href="https://protect-eu.mimecast.com/s/P7cuC69NjFXn0EVtLwdqF?domain=asics.com" style="color:#ffffff;text-decoration:none; display: inline-block;  font-weight: bold; padding: 9px 0; width: 100%;" target="_blank" title="">商品一覧</a></td></tr></table></td></tr></table></td></tr></table><table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="min-width: 100%; " class="stylingblock-content-wrapper"><tr><td class="stylingblock-content-wrapper camarker-inner"><table aria-hidden="true" class="email-container" role="presentation" style="max-width: 680px;mso-hide:all;" width="100%" height="30" cellspacing="0" cellpadding="0" border="0" align="center">
+ 
+  <tr>
+   <td>
+    <table aria-hidden="true" role="presentation" style="background-color:#F2F4F7;" width="100%" cellspacing="0" cellpadding="0" border="0">
+     
+      <tr>
+      </tr></table></td></tr></table></td></tr></table><table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="min-width: 100%; " class="stylingblock-content-wrapper"><tr><td class="stylingblock-content-wrapper camarker-inner"><table border="0" cellpadding="0" cellspacing="0" class="OneColumn" role="presentation" style="font-family: sans-serif;" width="100%">
+ 
+  <tr>
+   <td align="center" style="padding: 0 15px;">
+    <table border="0" cellpadding="0" cellspacing="0" role="presentation">
+     
+      <tr>
+       <td align="center" style="padding: 0 0 15px;">
+        <a alias="image9" conversion="false" data-linkto="https://" href="https://protect-eu.mimecast.com/s/ZBcbC9gNmu85NvRSGmQzP?domain=asics.com" title=""><img alt="Image Alt" data-assetid="526492" src="https://image.info.asics.com/lib/fe33157075640675701276/m/18/58a6f2ae-8321-4f3d-9790-e5be244bdfc1.png" style="display: block; margin: 0px; width: 100%; padding: 0px; height: auto; text-align: center; border: 0px none transparent;" width="640"></a></td></tr><tr>
+       <td align="center">
+        <h1 class="heading" style="color: #011e62; font-family: sans-serif; font-size: 21px; line-height: 1; mso-line-height-alt: 90%; margin: 0 0 15px;">
+         お得な価格で<br>
+         今すぐに活躍するウエアとシューズを。</h1></td></tr><tr>
+       <td align="center" style="color: #011e62; font-size: 16px; line-height: 1.3; word-break: break-word;">
+        <p style="margin: 0px 0px 15px; text-align: left;">
+         防風機能を持ち保温性を追求したあたたかいウエアや、人気のランニングシューズをお求めやすい価格で手に入れるチャンス。<br>
+         <br>
+         この機会に冬のランニングアイテムを揃えよう。</p></td></tr></table></td></tr></table></td></tr></table><table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="min-width: 100%; " class="stylingblock-content-wrapper"><tr><td class="stylingblock-content-wrapper camarker-inner"><table border="0" cellpadding="0" cellspacing="0" role="presentation" style="max-width: 640px; margin: 0 auto;" width="100%">
+ 
+  <tr class="nostack-2col">
+   <td align="center" style="width: 316px;" valign="top">
+    <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="font-family: sans-serif;" width="100%">
+     
+      <tr>
+       <td align="center" style="padding: 0 0 20px;">
+        <a alias="image10" conversion="false" data-linkto="https://" href="https://protect-eu.mimecast.com/s/egMSC0L7BUjRgKJI9Zwg_?domain=asics.com" title=""><img alt="Image Alt" data-assetid="525956" src="https://image.info.asics.com/lib/fe33157075640675701276/m/18/e9657631-1062-467a-a4fb-b92a97a8121c.jpg" style="display: block; margin: 0px; max-width: 316px; width: 100%; padding: 0px; height: auto; text-align: center; border: 0px;" width="316"></a></td></tr><tr>
+       <td align="center" style="word-break: break-word;">
+        <h2 class="subheading" style="color: #011e62; font-family: sans-serif; font-size: 18px; line-height: 1.2; margin: 0 20px 5px; word-break: break-word;">
+         ENERGY SAVINGロングタイツ</h2></td></tr><tr>
+       <td align="center" style="color: #011e62; font-size: 14px; line-height: 1.3; word-break: break-word;">
+        <p class="price" style="font-weight: bold; margin: 0 0 15px;">
+        </p></td></tr><tr>
+       <td align="center" class="cta-text" style=" font-size: 14px; font-weight: 500; line-height: 1.3; padding: 0 20px 15px; word-break: break-word;">
+        <p class="price" style="font-weight: bold; margin: 0 0 15px;">
+         <span style="color: #011e62;"><s>&yen; 14,500</s>&nbsp;&rArr;&nbsp;</span><br>
+         <span style="color:#ff0000;">&yen; 10,120 (税込)</span></p></td></tr></table></td><td style="min-width: 4px;">
+    &nbsp;</td><td align="center" style="width: 316px;" valign="top">
+    <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="font-family: sans-serif;" width="100%">
+     
+      <tr>
+       <td align="center" style="padding: 0 0 20px;">
+        <a alias="image11" conversion="false" data-linkto="https://" href="https://protect-eu.mimecast.com/s/ikOvCg2EPC8LwrPSJHrRs?domain=asics.com" title=""><img alt="Image Alt" data-assetid="525957" src="https://image.info.asics.com/lib/fe33157075640675701276/m/18/f11ca713-2d53-440f-82ce-3855b8aaa2e3.jpg" style="display: block; margin: 0px; max-width: 316px; width: 100%; padding: 0px; height: auto; text-align: center; border: 0px;" width="316"></a></td></tr><tr>
+       <td align="center" style="word-break: break-word;">
+        <h2 class="subheading" style="color: #011e62; font-family: sans-serif; font-size: 18px; line-height: 1.2; margin: 0 20px 5px; text-transform: uppercase; word-break: break-word;">
+         NOVABLAST 2</h2></td></tr><tr>
+       <td align="center" style="color: #011e62; font-size: 14px; line-height: 1.3; word-break: break-word;">
+        <p class="price" style="font-weight: bold; margin: 0 0 15px;">
+        </p></td></tr><tr>
+       <td align="center" class="cta-text" style=" font-size: 14px; font-weight: 500; line-height: 1.3; padding: 0 20px 15px; word-break: break-word;">
+        <p class="price" style="font-weight: bold; margin: 0 0 15px;">
+         <span style="color:#ff0000;">&yen; 13,750 (税込)</span></p></td></tr></table></td></tr></table></td></tr></table><table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="min-width: 100%; " class="stylingblock-content-wrapper"><tr><td class="stylingblock-content-wrapper camarker-inner"><table border="0" cellpadding="0" cellspacing="0" role="presentation" style="font-family: sans-serif;" width="100%">
+ 
+  <tr>
+   <td align="center" style="padding: 10px 15px;">
+    <table border="0" cellpadding="0" cellspacing="0" role="presentation">
+     
+      <tr>
+       <td align="center" class="cta-btn" style="background-color: #011e62; border: 2px solid #011e62; border-radius: 50px; font-size: 16px; line-height: 1.1; mso-padding-alt: 8px 1px 10px; width: 240px;">
+        <a alias="CTA4" conversion="false" data-linkto="https://" href="https://protect-eu.mimecast.com/s/c931Cj8KPSg7G2ls2H1Uo?domain=asics.com" style="color:#ffffff;text-decoration:none; display: inline-block;  font-weight: bold; padding: 9px 0; width: 100%;" target="_blank" title="">シューズ一覧</a></td></tr></table></td></tr></table></td></tr></table><table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="min-width: 100%; " class="stylingblock-content-wrapper"><tr><td class="stylingblock-content-wrapper camarker-inner"><table border="0" cellpadding="0" cellspacing="0" role="presentation" style="font-family: sans-serif;" width="100%">
+ 
+  <tr>
+   <td align="center" style="padding: 10px 15px;">
+    <table border="0" cellpadding="0" cellspacing="0" role="presentation">
+     
+      <tr>
+       <td align="center" class="cta-btn" style="background-color: #011e62; border: 2px solid #011e62; border-radius: 50px; font-size: 16px; line-height: 1.1; mso-padding-alt: 8px 1px 10px; width: 240px;">
+        <a alias="CTA5" conversion="false" data-linkto="https://" href="https://protect-eu.mimecast.com/s/sokLCk7LPIgMX7Ysr6l0z?domain=asics.com" style="color:#ffffff;text-decoration:none; display: inline-block;  font-weight: bold; padding: 9px 0; width: 100%;" target="_blank" title="">ウエア・アクセサリー一覧</a></td></tr></table></td></tr></table></td></tr></table><table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="min-width: 100%; " class="stylingblock-content-wrapper"><tr><td class="stylingblock-content-wrapper camarker-inner"><table align="center" aria-hidden="true" border="0" cellpadding="0" cellspacing="0" class="email-container" height="30" role="presentation" style="max-width: 680px;mso-hide:all;" width="100%">
+ 
+  <tr>
+   <td>
+    <table aria-hidden="true" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background-color:#F2F4F7;" width="100%">
+     
+      <tr>
+      </tr></table></td></tr></table></td></tr></table><table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="min-width: 100%; " class="stylingblock-content-wrapper"><tr><td class="stylingblock-content-wrapper camarker-inner"><table border="0" cellpadding="0" cellspacing="0" class="OneColumn" role="presentation" style="font-family: sans-serif;" width="100%">
+ 
+  <tr>
+   <td align="center" style="padding: 0 15px;">
+    <table border="0" cellpadding="0" cellspacing="0" role="presentation">
+     
+      <tr>
+       <td align="center" style="padding: 0 0 15px;">
+        <a alias="image12" conversion="false" data-linkto="https://" href="https://protect-eu.mimecast.com/s/4GzaCl7gPILBPyOTwDBTL?domain=asics.com" title=""><img alt="Image Alt" data-assetid="525945" src="https://image.info.asics.com/lib/fe33157075640675701276/m/18/7843f0ed-4202-47c3-9b34-6259727e168e.png" style="display: block; margin: 0px; width: 100%; padding: 0px; height: auto; text-align: center; border: 0px none transparent;" width="640"></a></td></tr><tr>
+       <td align="center">
+        <h1 class="heading" style="color: #011e62; font-family: sans-serif; font-size: 21px; line-height: 1; mso-line-height-alt: 90%; margin: 0 0 15px;">
+         〆切まであと3日！<br>
+         ASICS Running Program</h1></td></tr><tr>
+       <td align="center" style="color: #011e62; font-size: 16px; line-height: 1.3; word-break: break-word;">
+        <p style="margin: 0px 0px 15px; text-align: left;">
+         東京マラソン2023などのフルマラソンで完走したい。モチベーションを維持してレース当日を迎えたい。今後フルマラソンに挑戦したいけど、トレーニング方法がわからない。そんな方は是非ご参加を。<br>
+         <br>
+         参加者には、コーチによるアドバイス配信を始め、さまざまなサービスをご用意。さらに、嬉しい特典も！<br>
+         <br>
+         <span style="font-size:12px;">※応募期間：12/18(日)まで</span></p></td></tr></table></td></tr></table></td></tr></table><table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="min-width: 100%; " class="stylingblock-content-wrapper"><tr><td class="stylingblock-content-wrapper camarker-inner"><table border="0" cellpadding="0" cellspacing="0" role="presentation" style="font-family: sans-serif;" width="100%">
+ 
+  <tr>
+   <td align="center" style="padding: 10px 15px;">
+    <table border="0" cellpadding="0" cellspacing="0" role="presentation">
+     
+      <tr>
+       <td align="center" class="cta-btn" style="background-color: #011e62; border: 2px solid #011e62; border-radius: 50px; font-size: 15px; line-height: 1.1; mso-padding-alt: 8px 1px 10px; width: 240px;">
+        <a alias="CTA6" conversion="false" data-linkto="https://" href="https://protect-eu.mimecast.com/s/4GzaCl7gPILBPyOTwDBTL?domain=asics.com" style="color:#ffffff;text-decoration:none; display: inline-block;  font-weight: bold; padding: 9px 0; width: 100%;" target="_blank" title="">特設ページ</a></td></tr></table></td></tr></table></td></tr></table><table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="min-width: 100%; " class="stylingblock-content-wrapper"><tr><td class="stylingblock-content-wrapper camarker-inner"><table aria-hidden="true" class="email-container" role="presentation" style="max-width: 680px;" width="100%" height="30" cellspacing="0" cellpadding="0" border="0" align="center">
+ 
+  <tr>
+   <td>
+    <table aria-hidden="true" role="presentation" style="background-color:#F2F4F7;mso-hide:all;margin: 0px 5px 7px 20px;" width="100%" cellspacing="0" cellpadding="0" border="0">
+     
+      <tr>
+      </tr></table></td></tr></table></td></tr></table><table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="min-width: 100%; " class="stylingblock-content-wrapper"><tr><td class="stylingblock-content-wrapper camarker-inner"><table border="0" cellpadding="0" cellspacing="0" class="OneColumn" role="presentation" style="font-family: sans-serif;" width="100%">
+ 
+  <tr>
+   <td align="center" style="padding: 0 15px;">
+    <table border="0" cellpadding="0" cellspacing="0" role="presentation">
+     
+      <tr>
+       <td align="center" style="padding: 0 0 15px;">
+        <a alias="image13" conversion="false" data-linkto="https://" href="https://protect-eu.mimecast.com/s/8ULuCmyjPHvmPZ1tYDuFQ?domain=playsure.asics.com" title=""><img alt="Image Alt" data-assetid="525942" src="https://image.info.asics.com/lib/fe33157075640675701276/m/18/9341b18f-35be-467e-9c2d-d4e05a5db87e.png" style="display: block; margin: 0px; width: 100%; padding: 0px; height: auto; text-align: center; border: 0px none transparent;" width="640"></a></td></tr><tr>
+       <td align="center">
+        <h1 class="heading" style="color: #011e62; font-family: sans-serif; font-size: 21px; line-height: 1; mso-line-height-alt: 90%; margin: 0 0 15px;">
+         500円から入れるお手頃な保険<br>
+         OneASICSポイントも利用可</h1></td></tr><tr>
+       <td align="center" style="color: #011e62; font-size: 16px; line-height: 1.3; word-break: break-word;">
+        <p style="margin: 0px 0px 15px; text-align: left;">
+         OneASICSポイントも利用可！500円から入れるお手頃な保険料で健康習慣をサポート。<br>
+         <br>
+         年間補償の「デイリーランナー保険」と、1ヶ月補償の「イベントランナー保険」をご用意。</p></td></tr></table></td></tr></table></td></tr></table><table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="min-width: 100%; " class="stylingblock-content-wrapper"><tr><td class="stylingblock-content-wrapper camarker-inner"><table border="0" cellpadding="0" cellspacing="0" role="presentation" style="font-family: sans-serif;" width="100%">
+ 
+  <tr>
+   <td align="center" style="padding: 10px 15px;">
+    <table border="0" cellpadding="0" cellspacing="0" role="presentation">
+     
+      <tr>
+       <td align="center" class="cta-btn" style="background-color: #011e62; border: 2px solid #011e62; border-radius: 50px; font-size: 15px; line-height: 1.1; mso-padding-alt: 8px 1px 10px; width: 240px;">
+        <a alias="CTA7" conversion="false" data-linkto="https://" href="https://protect-eu.mimecast.com/s/8ULuCmyjPHvmPZ1tYDuFQ?domain=playsure.asics.com/" style="color:#ffffff;text-decoration:none; display: inline-block;  font-weight: bold; padding: 9px 0; width: 100%;" target="_blank" title="">詳しくはこちら</a></td></tr></table></td></tr></table></td></tr></table><table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="min-width: 100%; " class="stylingblock-content-wrapper"><tr><td class="stylingblock-content-wrapper camarker-inner"><table aria-hidden="true" class="email-container" role="presentation" style="max-width: 680px;" width="100%" height="30" cellspacing="0" cellpadding="0" border="0" align="center">
+ 
+  <tr>
+   <td>
+    <table aria-hidden="true" role="presentation" style="background-color:#F2F4F7;mso-hide:all;margin: 0px 5px 7px 20px;" width="100%" cellspacing="0" cellpadding="0" border="0">
+     
+      <tr>
+      </tr></table></td></tr></table></td></tr></table>
+                <table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="min-width: 100%; " class="stylingblock-content-wrapper"><tr><td class="stylingblock-content-wrapper camarker-inner"><table class="footerMainCat" role="presentation" style="font-family: sans-serif;" width="100%" cellspacing="0" cellpadding="0" border="0">
+ 
+  <tr>
+   <td class="stack-wrapper" style="padding: 0 8px;" align="right">
+    <!--[if true]>
+      <table border="0" cellpadding="0" cellspacing="0" role="presentation">
+        <tr>
+          <td align="center" valign="top" style="width: 200px;">
+            <![endif]--><div class="column" style="border-bottom: 1px solid #cacacc;">
+     <table role="presentation" style="display: inline-block; vertical-align: middle;" width="100%" cellspacing="0" cellpadding="0" border="0">
+      
+       <tr>
+        <td class="carrot" style="height: 50px; padding: 0 8px 0 12px; width: 8px;" valign="middle" align="left">
+         <a alias="footer-men-shoes" class="nav-item" href="https://protect-eu.mimecast.com/s/h1nDCnOkPCnJ3zlfofmaq?domain=asics.com" style="display: block; color: #011e62; margin: 2px 0 0; text-decoration: none; width: 100%;"><img alt="" src="https://image.info.asics.com/lib/fe33157075640675701276/m/8/83fb03e4-21af-4df0-9feb-0db0bd5e7d1c.png" style="border: 0; display: block; margin: 0; max-width: 8px; width: 100%;" width="8"> </a></td><td style="font-size: 16px; font-weight: bold; line-height: 1; mso-line-height-alt: 90%; padding: 8px 0;" valign="middle" align="left">
+         <a alias="footer-men-shoes" class="nav-item" href="https://protect-eu.mimecast.com/s/h1nDCnOkPCnJ3zlfofmaq?domain=asics.com/" style="display: block; color: #011e62; margin: 2px 0 0; text-decoration: none; width: 100%;">メンズシューズ </a></td></tr></table></div><!--[if true]>
+          </td>
+          <td align="center" valign="top" style="width: 200px;">
+            <![endif]--><div class="column" style="border-bottom: 1px solid #cacacc;">
+     <table role="presentation" style="display: inline-block; vertical-align: middle;" width="100%" cellspacing="0" cellpadding="0" border="0">
+      
+       <tr>
+        <td class="carrot" style="height: 50px; padding: 0 8px 0 12px; width: 8px;" valign="middle" align="left">
+         <a alias="footer-women-shoes" class="nav-item" href="https://protect-eu.mimecast.com/s/c2PACoylPHk7PMlF33C8G?domain=asics.com" style="display: block; color: #011e62; margin: 2px 0 0; text-decoration: none; width: 100%;"><img alt="" src="https://image.info.asics.com/lib/fe33157075640675701276/m/8/83fb03e4-21af-4df0-9feb-0db0bd5e7d1c.png" style="border: 0; display: block; margin: 0; max-width: 8px; width: 100%;" width="8"> </a></td><td style="font-size: 16px; font-weight: bold; line-height: 1; mso-line-height-alt: 90%; padding: 8px 0;" valign="middle" align="left">
+         <a alias="footer-women-shoes" class="nav-item" href="https://protect-eu.mimecast.com/s/c2PACoylPHk7PMlF33C8G?domain=asics.com/" style="display: block; color: #011e62; margin: 2px 0 0; text-decoration: none; width: 100%;">ウイメンズシューズ </a></td></tr></table></div><!--[if true]>
+          </td>
+          <td align="center" valign="top" style="width: 200px;">
+            <![endif]--><div class="column" style="border-bottom: 1px solid #cacacc;">
+     <table role="presentation" style="display: inline-block; vertical-align: middle;" width="100%" cellspacing="0" cellpadding="0" border="0">
+      
+       <tr>
+        <td class="carrot" style="height: 50px; padding: 0 8px 0 12px; width: 8px;" valign="middle" align="left">
+         <a alias="footer-kids-shoes" class="nav-item" href="https://protect-eu.mimecast.com/s/AJ31Cp2mPC5jOGQFZQhY1?domain=asics.com" style="display: block; color: #011e62; margin: 2px 0 0; text-decoration: none; width: 100%;"><img alt="" src="https://image.info.asics.com/lib/fe33157075640675701276/m/8/83fb03e4-21af-4df0-9feb-0db0bd5e7d1c.png" style="border: 0; display: block; margin: 0; max-width: 8px; width: 100%;" width="8"> </a></td><td style="font-size: 16px; font-weight: bold; line-height: 1; mso-line-height-alt: 90%; padding: 8px 0;" valign="middle" align="left">
+         <a alias="footer-kids-shoes" class="nav-item" href="https://protect-eu.mimecast.com/s/AJ31Cp2mPC5jOGQFZQhY1?domain=asics.com/" style="display: block; color: #011e62; margin: 2px 0 0; text-decoration: none; width: 100%;">キッズシューズ </a></td></tr></table></div><!--[if true]>
+          </td>
+        </tr>
+        <tr>
+          <td align="center" valign="top" style="width: 200px;">
+            <![endif]--><div class="column" style="border-bottom: 1px solid #cacacc;">
+     <table role="presentation" style="display: inline-block; vertical-align: middle;" width="100%" cellspacing="0" cellpadding="0" border="0">
+      
+       <tr>
+        <td class="carrot" style="height: 50px; padding: 0 8px 0 12px; width: 8px;" valign="middle" align="left">
+         <a alias="footer-men-apparel" class="nav-item" href="https://protect-eu.mimecast.com/s/RS8qCqZn9t9pkDLh4need?domain=asics.com" style="display: block; color: #011e62; margin: 2px 0 0; text-decoration: none; width: 100%;"><img alt="" src="https://image.info.asics.com/lib/fe33157075640675701276/m/8/83fb03e4-21af-4df0-9feb-0db0bd5e7d1c.png" style="border: 0; display: block; margin: 0; max-width: 8px; width: 100%;" width="8"> </a></td><td style="font-size: 16px; font-weight: bold; line-height: 1; mso-line-height-alt: 90%; padding: 8px 0;" valign="middle" align="left">
+         <a alias="footer-men-apparel" class="nav-item" href="https://protect-eu.mimecast.com/s/RS8qCqZn9t9pkDLh4need?domain=asics.com/" style="display: block; color: #011e62; margin: 2px 0 0; text-decoration: none; width: 100%;">メンズウエア </a></td></tr></table></div><!--[if true]>
+          </td>
+          <td align="center" valign="top" style="width: 200px;">
+            <![endif]--><div class="column" style="border-bottom: 1px solid #cacacc;">
+     <table role="presentation" style="display: inline-block; vertical-align: middle;" width="100%" cellspacing="0" cellpadding="0" border="0">
+      
+       <tr>
+        <td class="carrot" style="height: 50px; padding: 0 8px 0 12px; width: 8px;" valign="middle" align="left">
+         <a alias="footer-women-apparel" class="nav-item" href="https://protect-eu.mimecast.com/s/1I_cCr9o6Fx5npwHrWe1p?domain=asics.com" style="display: block; color: #011e62; margin: 2px 0 0; text-decoration: none; width: 100%;"><img alt="" src="https://image.info.asics.com/lib/fe33157075640675701276/m/8/83fb03e4-21af-4df0-9feb-0db0bd5e7d1c.png" style="border: 0; display: block; margin: 0; max-width: 8px; width: 100%;" width="8"> </a></td><td style="font-size: 16px; font-weight: bold; line-height: 1; mso-line-height-alt: 90%; padding: 8px 0;" valign="middle" align="left">
+         <a alias="footer-women-apparel" class="nav-item" href="https://protect-eu.mimecast.com/s/1I_cCr9o6Fx5npwHrWe1p?domain=asics.com/" style="display: block; color: #011e62; margin: 2px 0 0; text-decoration: none; width: 100%;">ウイメンズウエア </a></td></tr></table></div><!--[if true]>
+          </td>
+          <td align="center" valign="top" style="width: 200px;">
+            <![endif]--><div class="column last-nav">
+     <table role="presentation" style="display: inline-block; vertical-align: middle;" width="100%" cellspacing="0" cellpadding="0" border="0">
+      
+       <tr>
+        <td class="carrot" style="height: 50px; padding: 0 8px 0 12px; width: 8px;" valign="middle" align="left">
+         <a alias="footer-kids-apparel" class="nav-item" href="https://protect-eu.mimecast.com/s/QuO1CvZvktvDLGOtj7l74?domain=asics.com" style="display: block; color: #011e62; margin: 2px 0 0; text-decoration: none; width: 100%;"><img alt="" src="https://image.info.asics.com/lib/fe33157075640675701276/m/8/83fb03e4-21af-4df0-9feb-0db0bd5e7d1c.png" style="border: 0; display: block; margin: 0; max-width: 8px; width: 100%;" width="8"> </a></td><td style="font-size: 16px; font-weight: bold; line-height: 1; mso-line-height-alt: 90%; padding: 8px 0;" valign="middle" align="left">
+         <a alias="footer-kids-apparel" class="nav-item" href="https://protect-eu.mimecast.com/s/QuO1CvZvktvDLGOtj7l74?domain=asics.com/" style="display: block; color: #011e62; margin: 2px 0 0; text-decoration: none; width: 100%;">キッズウエア </a></td></tr></table></div><!--[if true]>
+          </td>
+        </tr>
+      </table>
+      <![endif]--></td></tr></table></td></tr></table><table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="min-width: 100%; " class="stylingblock-content-wrapper"><tr><td class="stylingblock-content-wrapper camarker-inner"><table border="0" cellpadding="0" cellspacing="0" class="footerSubCat" role="presentation" style="font-family: sans-serif;" width="100%">
+ 
+  <tr>
+   <td align="center" class="container" style="padding: 0 8px 15px;">
+    <table border="0" cellpadding="0" cellspacing="0" role="presentation">
+     
+      <tr>
+       <td align="right" class="nav-column" style="background-color: #f2f4f7; min-height: 50px; padding: 8px 0; width: 205px;" valign="middle">
+        <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
+         
+          <tr>
+           <td align="left" class="carrot" style="padding: 0 8px 0 12px; width: 8px;" valign="middle">
+            <a alias="footer-men-shoes" class="nav-item" href="https://protect-eu.mimecast.com/s/2zYCCwrwlHoDV70TPrzht?domain=asics.com" style="display: block; color: #011e62; text-decoration: none; width: 100%;"><img alt="" class="arrow" src="https://image.info.asics.com/lib/fe33157075640675701276/m/8/83fb03e4-21af-4df0-9feb-0db0bd5e7d1c.png" style="border: 0; display: block; margin: 0; max-width: 8px; min-width: 8px; width: 100%;" width="8"> </a></td><td align="left" style="font-size: 14px; font-weight: bold; line-height: 1.3; padding: 8px 0;" valign="middle">
+            <a alias="dtc-limited" class="nav-item" conversion="false" data-linkto="https://" href="https://protect-eu.mimecast.com/s/2zYCCwrwlHoDV70TPrzht?domain=asics.com/" style="color:#011e62;text-decoration:none;display: block; width: 100%;" title="">直営限定</a></td></tr></table></td><td style="min-width: 4px; width: 6px;">
+        &zwnj;</td><td align="right" class="nav-column" style="background-color: #f2f4f7; min-height: 50px; padding: 8px 0; width: 205px;" valign="middle">
+        <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
+         
+          <tr>
+           <td align="left" class="carrot" style="padding: 0 8px 0 12px; width: 8px;" valign="middle">
+            <a alias="footer-women-shoes" class="nav-item" href="https://protect-eu.mimecast.com/s/0YSoCx1xmsZ2RymT9QOZG?domain=asics.com" style="display: block; color: #011e62; text-decoration: none; width: 100%;"><img alt="" class="arrow" src="https://image.info.asics.com/lib/fe33157075640675701276/m/8/83fb03e4-21af-4df0-9feb-0db0bd5e7d1c.png" style="border: 0; display: block; margin: 0; max-width: 8px; min-width: 8px; width: 100%;" width="8"> </a></td><td align="left" style="font-size: 14px; font-weight: bold; line-height: 1.3; padding: 8px 0;" valign="middle">
+            <a alias="new-arrivals" class="nav-item" conversion="false" data-linkto="https://" href="https://protect-eu.mimecast.com/s/bJZXCyXynHYl2g6hBnVdE?domain=asics.com" style="color:#011e62;text-decoration:none;display: block; width: 100%;" title="">新着商品</a></td></tr></table></td><td style="min-width: 4px; width: 6px;">
+        &zwnj;</td><td align="right" class="nav-column" style="background-color: #f2f4f7; min-height: 50px; padding: 8px 0; width: 205px;" valign="middle">
+        <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
+         
+          <tr>
+           <td align="left" class="carrot" style="padding: 0 8px 0 12px; width: 8px;" valign="middle">
+            <a alias="footer-kids-shoes" class="nav-item" href="https://protect-eu.mimecast.com/s/GFwuCzXzoHK0w38uOynHe?domain=asics.com" style="display: block; color: #011e62; text-decoration: none; width: 100%;"><img alt="" class="arrow" src="https://image.info.asics.com/lib/fe33157075640675701276/m/8/83fb03e4-21af-4df0-9feb-0db0bd5e7d1c.png" style="border: 0; display: block; margin: 0; max-width: 8px; min-width: 8px; width: 100%;" width="8"> </a></td><td align="left" style="font-size: 14px; font-weight: bold; line-height: 1.3; padding: 8px 0;" valign="middle">
+            <a alias="sale" class="nav-item" conversion="false" data-linkto="https://" href="https://protect-eu.mimecast.com/s/GFwuCzXzoHK0w38uOynHe?domain=asics.com/" style="color:#011e62;text-decoration:none;display: block; width: 100%;" title="">セール</a></td></tr></table></td></tr></table></td></tr></table></td></tr></table><table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="min-width: 100%; " class="stylingblock-content-wrapper"><tr><td class="stylingblock-content-wrapper camarker-inner"><table class="socialBar" role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
+ 
+  <tr>
+   <td class="container" style="padding: 0 10px 7px;" align="center">
+    <table role="presentation" style="border-bottom: 1px solid #011e62;" width="100%" cellspacing="0" cellpadding="0" border="0">
+     
+      <tr>
+       <td align="center">
+        <div style="padding: 0 15px;">
+         <table role="presentation" cellspacing="0" cellpadding="0" border="0">
+          
+           <tr>
+            <td class="icon-wrapper" style="padding: 8px 0; width: 62px;" align="center">
+             <a alias="Facebook" href="https://protect-eu.mimecast.com/s/WSyjCA1lxsjvlgrIpkVd7?domain=facebook.com" target="_blank"><img alt="Facebook" src="https://image.info.asics.com/lib/fe33157075640675701276/m/9/6aedb006-8bf2-40cf-97fa-50d3d4924608.png" style="border: 0; display: block; margin: 0; max-width: 43px; width: 90%;" width="43"> </a></td><td class="icon-wrapper" style="padding: 8px 0; width: 62px;" align="center">
+             <a alias="Instagram" href="https://protect-eu.mimecast.com/s/DXezCB6mytvgR1PtkV2Oc?domain=instagram.com" target="_blank"><img alt="Instagram" src="https://image.info.asics.com/lib/fe33157075640675701276/m/9/499a1b95-abb1-4af0-9c19-dcd44f7b59ca.png" style="border: 0; display: block; margin: 0; max-width: 43px; width: 90%;" width="43"> </a></td><td class="icon-wrapper" style="padding: 8px 0; width: 62px;" align="center">
+             <a alias="Twitter" href="https://protect-eu.mimecast.com/s/lwH_CD8oASXRJ1jtQgWPG?domain=twitter.com" target="_blank"><img alt="Twitter" src="https://image.info.asics.com/lib/fe33157075640675701276/m/9/b0729525-517e-4f1d-947e-0f807b89aa1e.png" style="border: 0; display: block; margin: 0; max-width: 43px; width: 90%;" width="43"> </a></td><td class="icon-wrapper" style="padding: 8px 0; width: 62px;" align="center">
+             <a alias="YouTube" href="https://protect-eu.mimecast.com/s/KQOtCExpBHBQ0m1t6MRur?domain=youtube.com" target="_blank"><img alt="YouTube" src="https://image.info.asics.com/lib/fe33157075640675701276/m/9/57d38d31-49de-4a20-8329-8b719234c6f0.png" style="border: 0; display: block; margin: 0; max-width: 43px; width: 90%;" width="43"> </a></td><td class="icon-wrapper" style="padding: 8px 0; width: 62px;" align="center">
+             <a alias="Line" href="https://protect-eu.mimecast.com/s/VTNzCG8rESwVOmWT2Fz8b?domain=page.line.me" target="_blank"><img alt="Line" src="https://image.info.asics.com/lib/fe33157075640675701276/m/9/98ca0c41-37bd-437a-b83c-2a569f5a00d3.png" style="border: 0; display: block; margin: 0; max-width: 43px; width: 90%;" width="43"> </a></td></tr></table></div></td></tr></table></td></tr></table></td></tr></table>
+                <table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="min-width: 100%; " class="stylingblock-content-wrapper"><tr><td class="stylingblock-content-wrapper camarker-inner">%%[ /* Unsubscribe AMPscript <!-- <div style="display:none;">*/
+  SET @subscriberKey = AttributeValue("_subscriberkey") 
+  SET @subKey = EncryptSymmetric(@subscriberKey, "AES", "pc-enc-ext-key", @null, "pc-iv-ext-key", @null, "pc-salt-ext-key", @null) 
+  SET @subKey = Replace(Base64Encode(@subKey), "=", "_")
+  SET @URL = CONCAT(&quot;<a href="https://protect-eu.mimecast.com/s/s8JzCJQxRtx7ARpHJGmII?domain=cloud.info.asics.com">http://cloud.info.asics.com/Unsubscription-Form</a>&quot;,&quot;?enc=&quot;,@subKey)
+/*</div>-->*/]%%<table align="center" border="0" cellpadding="0" cellspacing="0" class="footer" role="presentation" style="font-family: sans-serif;" width="100%">
+ 
+  <tr>
+   <td align="center" class="container" style="color: #011e62; font-size: 11px; line-height: 1.7; mso-line-height: 125%; padding: 25px 0 0;">
+    <p style="font-size: 13px; font-weight: bold; margin: 0 0 20px;">
+     <a alias="Footer_ユーザーサポート" href="https://protect-eu.mimecast.com/s/HXJLCKQyRtLjMl8T0NzVk?domain=asics.com" style="color: #011e62; display: inline-block; text-decoration: none;" target="_blank">ユーザーサポート </a> &zwnj;&nbsp;|&nbsp;&zwnj;<!--[if false]><!--><br class="mobile-line-break">
+     <!--<![endif]--> <a alias="Footer_注文履歴" href="https://protect-eu.mimecast.com/s/jhU1CLJzRCLJwANT8y-sT?domain=asics.com" style="color: #011e62; display: inline-block; text-decoration: none;" target="_blank"> 注文履歴 </a> &zwnj;&nbsp;|&nbsp;&zwnj; <a alias="Footer_お問い合わせ" href="https://protect-eu.mimecast.com/s/RLb9CM1A6sjQkgxI8eajP?domain=asics.com" style="color: #011e62; display: inline-block; text-decoration: none;" target="_blank"> お問い合わせ </a> &zwnj;&nbsp;|&nbsp;&zwnj;<!--[if false]><!--><br class="mobile-line-break">
+     <!--<![endif]--> <a alias="Footer_Asics Online Store" href="https://protect-eu.mimecast.com/s/8ZA6C14NDS87B1nSL7Ytt?domain=asics.com/" style="color: #011e62; display: inline-block; text-decoration: none;" target="_blank"> ASICS Online Store </a></p><p style="margin: 0 0 40px;">
+     メルマガ停止希望の方は <a alias="Unsubscribe" href="%%=RedirectTo(@URL)=%%" style="color: #001e62; text-decoration: underline;" target="_blank">こちら</a> をクリックし<!--[if false]><!--><br class="mobile-line-break">
+     <!--<![endif]-->『停止処理』を行ってください。</p><p class="copyright" style="margin: 0 0 30px;">
+     &copy; %%xtyear%% ASICS Corporation<br>
+     発行元： アシックスジャパン株式会社</p></td></tr></table></td></tr></table>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+    <div style="display: none; max-height: 0px; overflow: hidden;">
+      <p style="font-size: 1px;">This email was sent by: 
+        %%Member_Busname%%<br>
+        %%Member_Addr%% %%Member_City%%, %%Member_State%%, %%Member_PostalCode%%, %%Member_Country%%
+      </p>
+      <a href="%%profile_center_url%%" alias="Update Profile"></a>
+    </div>
+  </body>
+</html>
